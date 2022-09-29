@@ -1,0 +1,6 @@
+CREATE USER 'db_ventas_user'@'%' identified BY '12345';
+GRANT ALL privileges ON ventas.* to 'db_ventas_user'@'%' with grant option;
+flush privileges;
+
+sisventa2022-4419747
+ALTER USER 'db_ventas_user'@'localhost' IDENTIFIED BY 'sisventa2022-4419747';

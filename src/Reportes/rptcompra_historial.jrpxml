@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperPrint xmlns="http://jasperreports.sourceforge.net/jasperreports/print" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/print http://jasperreports.sourceforge.net/xsd/jasperprint.xsd" name="rptventa_historial" pageWidth="600" pageHeight="800" topMargin="20" leftMargin="20" bottomMargin="20" rightMargin="20" locale="es_PY" timezone="America/Asuncion">
+	<property name="net.sf.jasperreports.export.xml.start.page.index" value="0"/>
+	<property name="net.sf.jasperreports.export.xml.end.page.index" value="0"/>
+	<property name="net.sf.jasperreports.export.xml.page.count" value="1"/>
+	<origin band="background"/>
+	<origin band="title"/>
+	<origin band="columnHeader"/>
+	<origin band="detail"/>
+	<origin band="columnFooter"/>
+	<origin band="pageFooter"/>
+	<page>
+		<text textAlignment="Center" verticalAlignment="Middle" textHeight="17.609375" lineSpacingFactor="1.2578125" leadingOffset="-3.0761719">
+			<reportElement uuid="659dd1cd-3ee1-4d0c-a7ab-5406d61bb5e7" x="253" y="32" width="174" height="20" origin="1" srcId="1" printId="1"/>
+			<font size="14" isBold="true" isUnderline="false"/>
+			<textContent><![CDATA[HISTORIAL COMPRAS]]></textContent>
+		</text>
+		<rectangle radius="10">
+			<reportElement uuid="1e934885-c673-44ca-aae7-4954c07a2226" x="20" y="78" width="560" height="24" origin="2" srcId="2" printId="1"/>
+		</rectangle>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656">
+			<reportElement uuid="a29f6552-8e47-4134-9fd3-f8ec96467034" x="30" y="82" width="100" height="20" origin="2" srcId="3" printId="1"/>
+			<textContent><![CDATA[Producto]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656">
+			<reportElement uuid="5a4ebfa9-d1fe-4b73-884f-2fc22198c0e3" x="153" y="82" width="44" height="20" origin="2" srcId="4" printId="1"/>
+			<textContent><![CDATA[Cantidad]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656">
+			<reportElement uuid="b81f26fd-6312-4b97-9ee4-6c939c9df9b8" x="257" y="82" width="72" height="20" origin="2" srcId="5" printId="1"/>
+			<textContent><![CDATA[Fecha compra]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656">
+			<reportElement uuid="01163df9-cbf5-4846-8935-d5e8192fd9c8" x="331" y="82" width="50" height="20" origin="2" srcId="6" printId="1"/>
+			<textContent><![CDATA[N° factura]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656">
+			<reportElement uuid="2b9e1389-74c9-42d1-9e02-d52c6de95c28" x="201" y="82" width="33" height="20" origin="2" srcId="7" printId="1"/>
+			<textContent><![CDATA[Precio]]></textContent>
+		</text>
+		<text textHeight="12.578125">
+			<reportElement uuid="e6a6b7a3-d6be-49de-85c3-5f96a561ea50" x="391" y="82" width="50" height="20" origin="2" srcId="8" printId="1"/>
+			<textContent><![CDATA[Sub Total	]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656">
+			<reportElement uuid="290f1748-0274-4b36-be03-a45d3442862e" x="448" y="82" width="42" height="20" origin="2" srcId="9" printId="1"/>
+			<textContent><![CDATA[Total]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656">
+			<reportElement uuid="b552814f-8a3e-487f-9c17-3b8d3d48a075" x="498" y="82" width="50" height="20" origin="2" srcId="10" printId="1"/>
+			<textContent><![CDATA[Proveedor]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656">
+			<reportElement uuid="6954407a-8453-498e-b0ea-9c0ec0875473" x="29" y="106" width="126" height="20" origin="3" srcId="11" printId="1"/>
+			<textContent><![CDATA[CERVEZA]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656" valueClass="java.lang.Integer">
+			<reportElement uuid="951ae8ae-8104-43e1-b678-6d30d4a54de5" x="161" y="106" width="32" height="20" origin="3" srcId="12" printId="1"/>
+			<textContent><![CDATA[1]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656" valueClass="java.lang.Long" pattern="#,##0">
+			<reportElement uuid="1a5a723a-ccfd-4f60-a8f7-0792d34bcc89" x="201" y="106" width="50" height="20" origin="3" srcId="13" printId="1"/>
+			<textContent><![CDATA[8.000]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656" valueClass="java.lang.Long" pattern="#,##0">
+			<reportElement uuid="71bfb20b-dea0-4d77-a5de-eff54e151d43" x="391" y="106" width="50" height="20" origin="3" srcId="14" printId="1"/>
+			<textContent><![CDATA[8.000]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656" valueClass="java.sql.Date" pattern="dd/MM/yyyy">
+			<reportElement uuid="831c2e0c-d8b3-4171-ac18-0b66bb43f094" x="257" y="106" width="60" height="20" origin="3" srcId="15" printId="1"/>
+			<textContent><![CDATA[20/07/2022]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656">
+			<reportElement uuid="26cf557c-0b56-4f0f-a442-8e33805e7b6d" x="331" y="106" width="60" height="20" origin="3" srcId="16" printId="1"/>
+			<textContent><![CDATA[0000028]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656" valueClass="java.lang.Long" pattern="#,##0">
+			<reportElement uuid="b4e82d57-e674-4746-a8b3-587c7bd76f3c" x="448" y="106" width="50" height="20" origin="3" srcId="17" printId="1"/>
+			<textContent><![CDATA[111.000]]></textContent>
+		</text>
+		<text textHeight="12.578125" lineSpacingFactor="1.2578125" leadingOffset="-2.1972656">
+			<reportElement uuid="e76a09fe-d67e-4816-9e35-96859a8ead8d" x="498" y="106" width="82" height="20" origin="3" srcId="18" printId="1"/>
+			<textContent><![CDATA[VISAO VIP]]></textContent>
+		</text>
+	</page>
+</jasperPrint>

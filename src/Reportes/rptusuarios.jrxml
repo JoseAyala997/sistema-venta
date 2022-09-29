@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptusuarios" language="groovy" pageWidth="800" pageHeight="842" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="618e6c79-6fe7-4de0-b243-713a2bad7149">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="buscar" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select c.idusuarios,p.numDocumento,concat(p.nombre ,' ', p.apellido) as persona,c.acceso,c.login,c.password,p.direccion,c.estado
+from usuarios c inner join persona p on c.idusuarios=p.idpersona where( p.nombre like $P{buscar} or p.numDocumento LIKE '%'"$P!{buscar}"'%' or p.nombre like '%'"$P!{buscar}"'%' or p.numDocumento LIKE '%'"$P!{buscar}"'%')
+ and c.estado='ACTIVO'  order by p.idpersona desc]]>
+	</queryString>
+	<field name="idusuarios" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numDocumento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="persona" class="java.lang.String"/>
+	<field name="acceso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="login" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="password" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="294" y="0" width="174" height="20" uuid="ee083627-5f2d-4200-85c8-85ae045fda2d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[LISTADO DE USUARIOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="760" height="25" uuid="fad71d8c-4011-4a3e-b24a-8d100b4af04b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="518" y="5" width="100" height="20" uuid="542e9c1f-2faf-40d9-8575-a9693eaa840c"/>
+				<text><![CDATA[Usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="645" y="5" width="100" height="20" uuid="330f4696-c97a-40ed-b63e-e78523d038f8"/>
+				<text><![CDATA[Contraseña]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="5" width="100" height="20" uuid="4f78ab37-13e7-42bc-9ee0-fb600d621fd6"/>
+				<text><![CDATA[Cod. Usuarios]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="254" y="5" width="100" height="20" uuid="b52d9ff8-5d2b-4f4e-961d-fae20ae84100"/>
+				<text><![CDATA[N° Documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="5" width="100" height="20" uuid="873dbfbc-987f-4d08-bb99-d20397bd6858"/>
+				<text><![CDATA[Acceso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="114" y="5" width="100" height="20" uuid="66c2dddb-95de-4adc-9437-158e02cdf289"/>
+				<text><![CDATA[Nombre y Apellido]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="518" y="0" width="100" height="20" uuid="1e1f432a-64a8-4e3e-a44d-f6f4a52a62a9"/>
+				<textFieldExpression><![CDATA[$F{login}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="645" y="0" width="100" height="20" uuid="5561980f-89c4-4395-8325-d5022afa8f6a"/>
+				<textFieldExpression><![CDATA[$F{password}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="0" width="100" height="20" uuid="918bfb42-4aca-4901-81a8-41f86510fcdc"/>
+				<textFieldExpression><![CDATA[$F{idusuarios}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="254" y="0" width="100" height="20" uuid="57b0e66d-80c9-438f-afcd-7ea622ad057d"/>
+				<textFieldExpression><![CDATA[$F{numDocumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="100" height="20" uuid="807d383c-dcd4-4347-9c68-2917f890a87b"/>
+				<textFieldExpression><![CDATA[$F{acceso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="114" y="0" width="100" height="20" uuid="38d6e9d6-7c4c-433a-93d3-2b3e243c4a95"/>
+				<textFieldExpression><![CDATA[$F{persona}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

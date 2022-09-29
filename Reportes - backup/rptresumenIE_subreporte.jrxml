@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptresumenIE_subreporte" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ebacd5dd-a515-467c-b7c9-3cf51bfc8dc3">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fin" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="egreso" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select idegresos,descripcion,sum(monto)as total,fecha,hora, estado FROM egresos where
+fecha BETWEEN $P{inicio} AND $P{fin} and estado ='EGRESO' group by descripcion order by idegresos desc]]>
+	</queryString>
+	<field name="idegresos" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hora" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="11" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="110" y="38" width="100" height="20" uuid="9c73e511-1ca8-4e91-8110-149961417a82"/>
+				<text><![CDATA[DESCRIPCION]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="7" y="38" width="326" height="20" uuid="f5c71131-0c52-41f9-aedc-af267724783b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="345" y="38" width="173" height="20" uuid="2e41884a-c408-4cae-acc3-b4a12426f349"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="267" y="38" width="56" height="20" uuid="8e06459a-86e2-40d7-8ad8-e4c1480460be"/>
+				<text><![CDATA[EGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="38" width="81" height="20" uuid="d4c010b8-d9f8-4413-8cbc-84b774964dd4"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="0" width="145" height="20" uuid="e097eba7-dfe1-4fef-9111-aec98eefcc57"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ RESUMEN DE EGRESOS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="346" y="38" width="172" height="20" uuid="18bcf515-33ff-442d-8073-1c2b7c063c36"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL EGRESO: "+$P{egreso}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="7" y="0" width="84" height="20" uuid="78144693-fcae-4a95-ba71-a2dda670056f"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="105" y="0" width="157" height="20" uuid="c13be0c1-a44e-4523-953c-28d810ce857a"/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="267" y="0" width="66" height="20" uuid="159e635f-d7fa-4a07-ad42-7b937c194927"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="6" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="6" splitType="Stretch"/>
+	</summary>
+</jasperReport>
