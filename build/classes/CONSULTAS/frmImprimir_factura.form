@@ -191,6 +191,9 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="txtbuscar">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtbuscarActionPerformed"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtbuscarKeyReleased"/>
@@ -202,7 +205,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="BUSCAR POR NUM. DE FACTURA O POR CLIENTE"/>
+            <Property name="text" type="java.lang.String" value="NUMERO DE FACTURA"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnguardar">

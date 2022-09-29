@@ -210,6 +210,7 @@ mostrarfacturas(buscar,p_fecha_Desde, p_fecha_Hasta);
         });
         jScrollPane1.setViewportView(jTable1);
 
+        txtbuscar.setEnabled(false);
         txtbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtbuscarActionPerformed(evt);
@@ -224,7 +225,7 @@ mostrarfacturas(buscar,p_fecha_Desde, p_fecha_Hasta);
             }
         });
 
-        jLabel2.setText("BUSCAR POR NUM. DE FACTURA O POR CLIENTE");
+        jLabel2.setText("NUMERO DE FACTURA");
 
         btnguardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/imprimir1.png"))); // NOI18N

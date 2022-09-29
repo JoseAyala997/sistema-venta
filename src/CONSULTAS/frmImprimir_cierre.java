@@ -14,6 +14,9 @@ import Presentacion.frmprincipal;
 import java.awt.Color;
 import java.io.File;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -40,24 +43,53 @@ public class frmImprimir_cierre extends javax.swing.JInternalFrame {
         int b = frmprincipal.jDesktopPane2.getHeight() - this.getHeight();
         setLocation(a / 2, b / 2);
         setVisible(true);
-        mostrar("");
 
         jPanel1.setBackground(new Color(0, 102, 100, 200));
         jPanel2.setBackground(new Color(0, 102, 100, 200));
 
+        Calendar mifecha = new GregorianCalendar();
+         Calendar mifecha2 = new GregorianCalendar();
+        dcinicio.setCalendar(mifecha);
+        dcfin.setCalendar(mifecha2);
+        
         StyloTabla st = new StyloTabla();
         setTitle("Imprimir factura");
 
         LOcultarColumna.modjtable(jTable1);
     }
 
-    void mostrar(String buscar) {
+    
+     void mostrarcierre(String buscar) {
+             java.util.Date desde = new java.util.Date();
+        SimpleDateFormat sdf_desde = new SimpleDateFormat("yyyy-MM-dd");
+        desde = dcinicio.getDate();
+         String p_fecha_Desde = sdf_desde.format(desde);
+
+        java.util.Date hasta = new java.util.Date();
+        SimpleDateFormat sdf_hasta = new SimpleDateFormat("yyyy-MM-dd");
+        hasta = dcfin.getDate();
+         String p_fecha_Hasta = sdf_hasta.format(hasta);
+        
+     mostrar(frmprincipal.lblcodusuario.getText(),p_fecha_Desde, p_fecha_Hasta);
+            
+        
+        
+       
+//            LOcultarColumna.ocultar_esta_columna2(jTable1, 0, 1, 2);
+
+
+    }
+    
+    void mostrar(String buscar,String inicio,String fin) {
+        
+     
+        
         try {
             DefaultTableModel modelo;
 
             fmovimiento_caja Funcion = new fmovimiento_caja();
 
-            modelo = Funcion.mostrarCierre(frmprincipal.lblcodusuario.getText());
+            modelo = Funcion.mostrarCierre(buscar,inicio,fin);
 
 //            int total = Funcion.totalregistros;
 //            lbltotalregistros.setText("Total Registros : " + String.valueOf(total));
@@ -86,6 +118,9 @@ public class frmImprimir_cierre extends javax.swing.JInternalFrame {
         txtbuscar = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnguardar = new javax.swing.JButton();
+        dcinicio = new com.toedter.calendar.JDateChooser();
+        dcfin = new com.toedter.calendar.JDateChooser();
+        btnbuscar = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -190,6 +225,14 @@ public class frmImprimir_cierre extends javax.swing.JInternalFrame {
             }
         });
 
+        btnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar32.png"))); // NOI18N
+        btnbuscar.setText("Buscar");
+        btnbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -200,7 +243,14 @@ public class frmImprimir_cierre extends javax.swing.JInternalFrame {
                         .addGap(23, 23, 23)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1044, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(dcinicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(42, 42, 42)
+                                .addComponent(dcfin, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(64, 64, 64)
+                                .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(496, 496, 496)
@@ -213,7 +263,12 @@ public class frmImprimir_cierre extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(dcfin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dcinicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -244,7 +299,7 @@ public class frmImprimir_cierre extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtbuscarActionPerformed
 
     private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
-        mostrar(txtbuscar.getText()); // TODO add your handling code here:
+        mostrarcierre(txtbuscar.getText()); // TODO add your handling code here:
     }//GEN-LAST:event_txtbuscarKeyReleased
 
     private void txtbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyTyped
@@ -322,6 +377,10 @@ public class frmImprimir_cierre extends javax.swing.JInternalFrame {
         txtbuscar.setText(jTable1.getValueAt(fila, 0).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
+        mostrarcierre(txtbuscar.getText());
+    }//GEN-LAST:event_btnbuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,7 +432,10 @@ public class frmImprimir_cierre extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btnguardar;
+    private com.toedter.calendar.JDateChooser dcfin;
+    private com.toedter.calendar.JDateChooser dcinicio;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;

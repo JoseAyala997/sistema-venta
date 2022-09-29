@@ -52,10 +52,11 @@ public class fegresos {
              ResultSet rs = st.executeQuery(SQL);
             
             while (rs.next()) {
-
+//format.format(rs.getDouble("precio_unitario"));
                 registro[0] = rs.getString("idegresos");
                 registro[1] = rs.getString("descripcion");
-                registro[2] = rs.getString("monto");
+                registro[2] = format.format(rs.getDouble("monto"));
+//                registro[2] = rs.getString("monto");
                 registro[3] = rs.getString("fecha");
                 registro[4] = rs.getString("hora");
                 registro[5] = rs.getString("estado");

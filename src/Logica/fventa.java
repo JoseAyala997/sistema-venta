@@ -315,7 +315,7 @@ public class fventa {
                 + "                FROM detalle_venta d INNER JOIN venta v ON d.idventa = v.idventa\n"
                 + "                 inner join persona p on p.idpersona=v.idpaciente\n"
                 + "                inner join persona u on u.idpersona=v.idusuarios\n"
-                + "              WHERE (CONCAT(p.nombre, ' ', p.apellido) like '%" + buscar + "%') OR v.nro_factura like '%" + buscar + "%' AND (v.fecha BETWEEN '" + inicio + "' AND '" + fin + "') AND (v.estado='FINALIZADO' OR v.estado='PENDIENTE') group by v.nro_factura desc";
+                + "              WHERE (v.fecha BETWEEN '" + inicio + "' AND '" + fin + "') AND (v.estado='FINALIZADO' OR v.estado='PENDIENTE') group by v.nro_factura desc";
         try {
              //abrimos la conexion
             Connection cn = mysql.conectar();

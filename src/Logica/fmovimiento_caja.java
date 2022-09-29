@@ -83,7 +83,7 @@ public class fmovimiento_caja {
         }
     }
 
-    public DefaultTableModel mostrarCierre(String buscar) {
+    public DefaultTableModel mostrarCierre(String buscar,String inicio,String fin) {
         DefaultTableModel modelo;
 
         String[] titulos = {"ID MOV", "NRO CAJA", "MONTO APERTURA", "MONTO CIERRE", "FECHA APERT.", "FECHA CIERRE", "CREDITO", "GASTOS", "COBRADO", "COMPRAS", "INGRESOS", "USUARIO", "ESTADO"};
@@ -94,7 +94,7 @@ public class fmovimiento_caja {
                 + "concat(p.nombre,' ',p.apellido) as funcionario from movimiento_caja cj \n"
                 + "join usuarios em on em.idusuarios=cj.idusuarios\n"
                 + "join persona p on em.idusuarios=p.idpersona\n"
-                + "where cj.estado='CERRADO' and cj.idusuarios='" + buscar + "' order by cj.idmovimiento Desc";
+                + "where (cj.fecha_cierre BETWEEN '" + inicio + "' AND '" + fin + "') AND cj.estado='CERRADO' and cj.idusuarios='" + buscar + "' order by cj.idmovimiento Desc";
 
         try {
             Connection cn = mysql.conectar();

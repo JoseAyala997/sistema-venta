@@ -9,6 +9,7 @@ import Datos.vegresos;
 import Logica.LOcultarColumna;
 import Logica.fegresos;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -23,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class frmEgresos extends javax.swing.JInternalFrame {
 
     public static String x;
+    DecimalFormat formatea = new DecimalFormat();
 
     public frmEgresos() {
         initComponents();
@@ -40,12 +42,11 @@ public class frmEgresos extends javax.swing.JInternalFrame {
 //        jPanel1.setBackground(new Color(0, 102, 100, 200));
 //        jPanel2.setBackground(new Color(0, 102, 100, 200));
 //        panelboton2.setBackground(new Color(0, 102, 100, 200));
-
 //        StyloTabla st = new StyloTabla();
 //        st.stylotabla(tablalistado);
         setSize(940, 650);
         setTitle("EGRESOS");
-        
+
         LOcultarColumna.modjtable(tablalistado);
     }
 
@@ -74,7 +75,6 @@ public class frmEgresos extends javax.swing.JInternalFrame {
         setVisible(true);
     }
 
-   
     String acceso;
 
     void nuevo() {
@@ -88,7 +88,7 @@ public class frmEgresos extends javax.swing.JInternalFrame {
         txtid.setVisible(false);
         txthora.setEnabled(false);
         txtidmovimiento.setVisible(false);
-        
+
         btneliminar.setEnabled(true);
         btncancelar.setEnabled(true);
         btninsertar.setEnabled(true);
@@ -325,6 +325,12 @@ public class frmEgresos extends javax.swing.JInternalFrame {
         lbltotalregistros.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lbltotalregistros.setText("jLabel9");
 
+        txtmonto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtmontoKeyReleased(evt);
+            }
+        });
+
         jLabel10.setText("MONTO");
 
         jLabel7.setText("FECHA");
@@ -469,7 +475,7 @@ public class frmEgresos extends javax.swing.JInternalFrame {
 
         dts.setIdusuarios(Integer.parseInt(frmprincipal.lblcodusuario.getText()));
         dts.setDescripcion(txtdescripcion.getText());
-        dts.setMonto(Long.parseLong(txtmonto.getText()));
+        dts.setMonto(Long.parseLong(txtmonto.getText().replaceAll("\\.", "")));
         dts.setIdmovimiento(Integer.parseInt(txtidmovimiento.getText()));
 
         Calendar cal = dcfecha.getCalendar();
@@ -485,15 +491,12 @@ public class frmEgresos extends javax.swing.JInternalFrame {
 
         if (accion.equals("guardar")) {
             func.insertar(dts);
-            
-         
-            
+
             JOptionPane.showMessageDialog(this, "REGISTRADO CORRECTAMENTE");
             mostrar("");
-             //funcion para obtener datos en frmprincipal
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-                frmprincipal.mostrarhoy(dtf.format(LocalDateTime.now()));
-
+            //funcion para obtener datos en frmprincipal
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            frmprincipal.mostrarhoy(dtf.format(LocalDateTime.now()));
 
         } else {
             acceso = frmprincipal.lblacceso.getText();
@@ -502,14 +505,13 @@ public class frmEgresos extends javax.swing.JInternalFrame {
                 dts.setIdegresos(Integer.parseInt(txtid.getText()));
 //                dts.setIdmovimiento(Integer.parseInt(txtidmovimiento.getText()));
                 func.editar(dts);
-                
+
                 JOptionPane.showMessageDialog(this, " EDITADO CORRECTAMENTE");
                 mostrar("");
-                 //funcion para obtener datos en frmprincipal
+                //funcion para obtener datos en frmprincipal
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
                 frmprincipal.mostrarhoy(dtf.format(LocalDateTime.now()));
 
-             
             } else {
                 JOptionPane.showMessageDialog(this, "SOLO UN ADMINISTRADOR PUEDE EDITAR");
                 cancelar();
@@ -536,7 +538,7 @@ public class frmEgresos extends javax.swing.JInternalFrame {
                 func.eliminar(dts);
                 mostrar("");
                 cancelar();
-                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
                 frmprincipal.mostrarhoy(dtf.format(LocalDateTime.now()));
 
             }
@@ -578,6 +580,15 @@ public class frmEgresos extends javax.swing.JInternalFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_tablalistadoMouseClicked
+
+    private void txtmontoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmontoKeyReleased
+
+        if (txtmonto.getText().length() >= 0) {
+            txtmonto.setText(txtmonto.getText().replace(".", ""));
+            int c = Integer.parseInt(txtmonto.getText());
+            txtmonto.setText(formatea.format(c) + "");
+        }
+    }//GEN-LAST:event_txtmontoKeyReleased
 
     /**
      * @param args the command line arguments
