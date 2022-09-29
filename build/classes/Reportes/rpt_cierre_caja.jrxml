@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_cierre caja" language="groovy" pageWidth="612" pageHeight="1008" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="897a5cf1-8e9d-45d4-92e9-7718b2598a03">
 	<property name="ireport.zoom" value="1.7715610000000017"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="336"/>
 	<parameter name="id" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -151,7 +151,7 @@ where m.idmovimiento =$P{id} order by m.idmovimiento desc limit 1]]>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="424" splitType="Stretch">
+		<band height="471" splitType="Stretch">
 			<staticText>
 				<reportElement x="26" y="4" width="49" height="15" uuid="884762fa-5c04-4d76-b9a2-6820e80cdb02"/>
 				<text><![CDATA[USUARIO:]]></text>
@@ -339,47 +339,47 @@ where m.idmovimiento =$P{id} order by m.idmovimiento desc limit 1]]>
 				<text><![CDATA[DETALLES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="175" y="272" width="78" height="15" uuid="ecc5fc2e-06e9-4eb9-883a-bbfbe946892a"/>
+				<reportElement x="199" y="272" width="78" height="15" uuid="ecc5fc2e-06e9-4eb9-883a-bbfbe946892a"/>
 				<text><![CDATA[MONTO]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="25" y="297" width="139" height="20" uuid="b21d1956-7dbb-4d69-9ea3-2d4091175c04"/>
+				<reportElement x="25" y="297" width="161" height="20" uuid="b21d1956-7dbb-4d69-9ea3-2d4091175c04"/>
 				<textFieldExpression><![CDATA[$F{detalle1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="25" y="316" width="139" height="20" uuid="f88d1d87-4139-472e-ab09-afe0175e809d"/>
+				<reportElement x="25" y="316" width="161" height="20" uuid="f88d1d87-4139-472e-ab09-afe0175e809d"/>
 				<textFieldExpression><![CDATA[$F{detalle2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="25" y="335" width="139" height="20" uuid="d2f05a80-a6f6-4c91-8984-984f87d86121"/>
+				<reportElement x="25" y="335" width="161" height="20" uuid="d2f05a80-a6f6-4c91-8984-984f87d86121"/>
 				<textFieldExpression><![CDATA[$F{detalle3}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="25" y="355" width="139" height="20" uuid="357193c2-9df5-4feb-92aa-da0aae5c80bb"/>
+				<reportElement x="25" y="355" width="161" height="20" uuid="357193c2-9df5-4feb-92aa-da0aae5c80bb"/>
 				<textFieldExpression><![CDATA[$F{detalle4}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="25" y="374" width="139" height="20" uuid="95b58bc8-dd48-4802-8156-46dbfd9de9bf"/>
+				<reportElement x="25" y="374" width="161" height="20" uuid="95b58bc8-dd48-4802-8156-46dbfd9de9bf"/>
 				<textFieldExpression><![CDATA[$F{detalle5}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0">
-				<reportElement x="180" y="297" width="100" height="20" uuid="76f9fac1-d76e-49a2-916c-d8802f7979b6"/>
+				<reportElement x="204" y="297" width="100" height="20" uuid="76f9fac1-d76e-49a2-916c-d8802f7979b6"/>
 				<textFieldExpression><![CDATA[$F{monto1}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0">
-				<reportElement x="180" y="316" width="100" height="20" uuid="5d66d3c6-52dd-4499-be47-9651d25499af"/>
+				<reportElement x="204" y="316" width="100" height="20" uuid="5d66d3c6-52dd-4499-be47-9651d25499af"/>
 				<textFieldExpression><![CDATA[$F{monto2}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0">
-				<reportElement x="180" y="335" width="100" height="20" uuid="31d49818-8e54-47a5-8d30-2695a30c8f4c"/>
+				<reportElement x="204" y="335" width="100" height="20" uuid="31d49818-8e54-47a5-8d30-2695a30c8f4c"/>
 				<textFieldExpression><![CDATA[$F{monto3}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0">
-				<reportElement x="180" y="355" width="100" height="20" uuid="314a4ad7-c28d-4fd4-a57d-6080e27a7117"/>
+				<reportElement x="204" y="355" width="100" height="20" uuid="314a4ad7-c28d-4fd4-a57d-6080e27a7117"/>
 				<textFieldExpression><![CDATA[$F{monto4}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0">
-				<reportElement x="180" y="374" width="100" height="20" uuid="223dc034-a11e-42da-9aaf-e1fd20a8cb9a"/>
+				<reportElement x="204" y="374" width="100" height="20" uuid="223dc034-a11e-42da-9aaf-e1fd20a8cb9a"/>
 				<textFieldExpression><![CDATA[$F{monto5}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -391,7 +391,10 @@ where m.idmovimiento =$P{id} order by m.idmovimiento desc limit 1]]>
 				<textFieldExpression><![CDATA[$F{a100}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0">
-				<reportElement x="397" y="213" width="100" height="20" uuid="7ce64ea0-86a2-4a54-9e44-1a82c3bca5fa"/>
+				<reportElement x="396" y="213" width="100" height="20" uuid="7ce64ea0-86a2-4a54-9e44-1a82c3bca5fa"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -429,7 +432,7 @@ where m.idmovimiento =$P{id} order by m.idmovimiento desc limit 1]]>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="24" splitType="Stretch"/>
+		<band height="72" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="334" splitType="Stretch"/>

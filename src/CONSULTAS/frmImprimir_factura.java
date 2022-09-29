@@ -33,8 +33,7 @@ import net.sf.jasperreports.view.JasperViewer;
 public class frmImprimir_factura extends javax.swing.JInternalFrame {
 
     public static String x;
-    String p_fecha_Hasta;
-    String p_fecha_Desde;
+ 
 
     public frmImprimir_factura() {
         initComponents();
@@ -46,23 +45,14 @@ public class frmImprimir_factura extends javax.swing.JInternalFrame {
         setVisible(true);
         
         
-         java.util.Date desde = new java.util.Date();
-        SimpleDateFormat sdf_desde = new SimpleDateFormat("yyyy-MM-dd");
-        desde = dcinicio.getDate();
-         p_fecha_Desde = sdf_desde.format(desde);
-
-        java.util.Date hasta = new java.util.Date();
-        SimpleDateFormat sdf_hasta = new SimpleDateFormat("yyyy-MM-dd");
-        hasta = dcfin.getDate();
-         p_fecha_Hasta = sdf_hasta.format(hasta);
-        
-//         Calendar mifecha = new GregorianCalendar();
-//         Calendar mifecha2 = new GregorianCalendar();
-//        dcinicio.setCalendar(mifecha);
-//        dcfin.setCalendar(mifecha2);
+    
+         Calendar mifecha = new GregorianCalendar();
+         Calendar mifecha2 = new GregorianCalendar();
+        dcinicio.setCalendar(mifecha);
+        dcfin.setCalendar(mifecha2);
         
         
-        mostrar("",p_fecha_Desde,p_fecha_Hasta);
+//        mostrar("",p_fecha_Desde,p_fecha_Hasta);
 
         jPanel1.setBackground(new Color(0, 102, 100, 200));
         jPanel2.setBackground(new Color(0, 102, 100, 200));
@@ -73,7 +63,17 @@ public class frmImprimir_factura extends javax.swing.JInternalFrame {
         LOcultarColumna.modjtable(jTable1);
     }
 
-    void mostrar(String buscar,String inicio,String fin) {
+    void mostrar(String buscar) {
+             java.util.Date desde = new java.util.Date();
+        SimpleDateFormat sdf_desde = new SimpleDateFormat("yyyy-MM-dd");
+        desde = dcinicio.getDate();
+         String p_fecha_Desde = sdf_desde.format(desde);
+
+        java.util.Date hasta = new java.util.Date();
+        SimpleDateFormat sdf_hasta = new SimpleDateFormat("yyyy-MM-dd");
+        hasta = dcfin.getDate();
+         String p_fecha_Hasta = sdf_hasta.format(hasta);
+        
         
         fventa fun = new fventa();
 //         
@@ -87,13 +87,29 @@ public class frmImprimir_factura extends javax.swing.JInternalFrame {
 //        hasta = dcFecha_termino.getDate();
 //        String p_fecha_Hasta = sdf_hasta.format(hasta);
 //
- fun.mostrarventa(buscar,p_fecha_Desde, p_fecha_Hasta);
+mostrarfacturas(buscar,p_fecha_Desde, p_fecha_Hasta);
             
         
         
        
-            LOcultarColumna.ocultar_esta_columna2(jTable1, 0, 1, 2);
+//            LOcultarColumna.ocultar_esta_columna2(jTable1, 0, 1, 2);
 
+
+    }
+     void mostrarfacturas(String buscar,String inicio, String fin) {
+        try {
+            DefaultTableModel modelo;
+
+            fventa Funcion = new fventa();
+
+            modelo = Funcion.mostrarventa(buscar,inicio, fin);
+
+//            int total = Funcion.totalregistros;
+//            lbltotalregistros.setText("Total Registros : " + String.valueOf(total));
+            jTable1.setModel(modelo);
+
+        } catch (Exception e) {
+        }
 
     }
 
@@ -117,6 +133,7 @@ public class frmImprimir_factura extends javax.swing.JInternalFrame {
         btnguardar = new javax.swing.JButton();
         dcfin = new com.toedter.calendar.JDateChooser();
         dcinicio = new com.toedter.calendar.JDateChooser();
+        btnbuscar = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -220,6 +237,14 @@ public class frmImprimir_factura extends javax.swing.JInternalFrame {
             }
         });
 
+        btnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar32.png"))); // NOI18N
+        btnbuscar.setText("Buscar");
+        btnbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -237,7 +262,9 @@ public class frmImprimir_factura extends javax.swing.JInternalFrame {
                                 .addGap(53, 53, 53)
                                 .addComponent(dcinicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(42, 42, 42)
-                                .addComponent(dcfin, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(dcfin, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(64, 64, 64)
+                                .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(496, 496, 496)
                         .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -252,15 +279,19 @@ public class frmImprimir_factura extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(dcfin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(dcfin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(3, 3, 3)))
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnguardar)
                         .addGap(13, 13, 13))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(dcinicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dcinicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -290,7 +321,9 @@ public class frmImprimir_factura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtbuscarActionPerformed
 
     private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
-        mostrar(txtbuscar.getText(),p_fecha_Desde,p_fecha_Hasta); // TODO add your handling code here:
+
+         
+        mostrar(txtbuscar.getText()); // TODO add your handling code here:
     }//GEN-LAST:event_txtbuscarKeyReleased
 
     private void txtbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyTyped
@@ -360,6 +393,11 @@ public class frmImprimir_factura extends javax.swing.JInternalFrame {
         txtbuscar.setText(jTable1.getValueAt(fila, 5).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
+         mostrar(txtbuscar.getText());
+
+    }//GEN-LAST:event_btnbuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -403,6 +441,7 @@ public class frmImprimir_factura extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btnguardar;
     private com.toedter.calendar.JDateChooser dcfin;
     private com.toedter.calendar.JDateChooser dcinicio;
