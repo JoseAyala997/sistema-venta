@@ -26,6 +26,38 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 
+
+//void empezar() {
+//        String titulos[] = {"Letras", "Nombres", "Precios"};
+//        Object matriz[][] = {{"M", "Ana", 34.32},
+//                {"A", "Zoila", 14.32},
+//                {"S", "Juan", 5.7},
+//                {"B", "Luis", 1.2}};
+//        tm = new DefaultTableModel(matriz, titulos) {
+//            public Class getColumnClass(int column) {
+//                Class Value;
+//                if (column >= 0 && column < getColumnCount()) {
+//                    Value = getValueAt(0, column).getClass();
+//                } else {
+//                    Value = Object.class;
+//                }
+//                return Value;
+//            }
+//        };
+//        tblDatos.setModel(tm);
+//        tr=new TableRowSorter<>(tm);
+//        tblDatos.setRowSorter(tr);
+//    }
+
+//boton
+//  String filtro=txtFiltro.getText();
+//        if(!filtro.equals("")){
+//            tr.setRowFilter(RowFilter.regexFilter(filtro));
+//        }else{
+//            tr.setRowFilter(null);
+//        }
+
+
 /**
  *
  * @author Jose Ayala

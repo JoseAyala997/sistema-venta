@@ -57,7 +57,7 @@
                         excludes="META-INF/*.SF, META-INF/*.DSA, META-INF/*.RSA"/>
         </zip>
  
-        <delete file="${store.dir}/temp_final.jar"/>
+        <!--<delete file="${store.dir}/temp_final.jar"/>-->
         <delete dir="${store.dir}/lib"/>
         <delete file="${store.dir}/README.TXT"/>
     </target>

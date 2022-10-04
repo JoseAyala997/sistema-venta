@@ -15,11 +15,44 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
+
+
+//void empezar() {
+//        String titulos[] = {"Letras", "Nombres", "Precios"};
+//        Object matriz[][] = {{"M", "Ana", 34.32},
+//                {"A", "Zoila", 14.32},
+//                {"S", "Juan", 5.7},
+//                {"B", "Luis", 1.2}};
+//        tm = new DefaultTableModel(matriz, titulos) {
+//            public Class getColumnClass(int column) {
+//                Class Value;
+//                if (column >= 0 && column < getColumnCount()) {
+//                    Value = getValueAt(0, column).getClass();
+//                } else {
+//                    Value = Object.class;
+//                }
+//                return Value;
+//            }
+//        };
+//        tblDatos.setModel(tm);
+//        tr=new TableRowSorter<>(tm);
+//        tblDatos.setRowSorter(tr);
+//    }
+
+//boton
+//  String filtro=txtFiltro.getText();
+//        if(!filtro.equals("")){
+//            tr.setRowFilter(RowFilter.regexFilter(filtro));
+//        }else{
+//            tr.setRowFilter(null);
+//        }
 
 /**
  *
@@ -27,6 +60,8 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class frmconsulta_productos extends javax.swing.JInternalFrame {
 
+    TableModel tm;
+    TableRowSorter<TableModel> tr;
     public static String x;
 
     public frmconsulta_productos() {
@@ -38,6 +73,7 @@ public class frmconsulta_productos extends javax.swing.JInternalFrame {
         setLocation(a / 2, b / 2);
         setVisible(true);
         mostrar("");
+        empezar();
 
 //    
 //        
@@ -47,6 +83,28 @@ public class frmconsulta_productos extends javax.swing.JInternalFrame {
 
         setTitle("Consultar Productos");
         LOcultarColumna.modjtable(jTable1);
+    }
+    
+    void empezar() {
+        String titulos[] = {"Letras", "Nombres", "Precios"};
+        Object matriz[][] = {{"M", "Ana", 34.32},
+                {"A", "Zoila", 14.32},
+                {"S", "Juan", 5.7},
+                {"B", "Luis", 1.2}};
+        tm = new DefaultTableModel(matriz, titulos) {
+            public Class getColumnClass(int column) {
+                Class Value;
+                if (column >= 0 && column < getColumnCount()) {
+                    Value = getValueAt(0, column).getClass();
+                } else {
+                    Value = Object.class;
+                }
+                return Value;
+            }
+        };
+        jTable1.setModel(tm);
+        tr=new TableRowSorter<>(tm);
+        jTable1.setRowSorter(tr);
     }
 
     void mostrar(String buscar) {
