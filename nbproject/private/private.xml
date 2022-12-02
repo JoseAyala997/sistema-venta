@@ -3,14 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Xampp/htdocs/sistema-venta/src/CONSULTAS/frmImprimir_factura.java</file>
-            <file>file:/C:/Xampp/htdocs/sistema-venta/src/Presentacion/frmEgresos.java</file>
-            <file>file:/C:/Xampp/htdocs/sistema-venta/src/Logica/fventa.java</file>
-            <file>file:/C:/Xampp/htdocs/sistema-venta/src/Logica/Conexion.java</file>
-            <file>file:/C:/Xampp/htdocs/sistema-venta/src/Presentacion/frmproducto2.java</file>
-            <file>file:/C:/Xampp/htdocs/sistema-venta/src/Logica/fegresos.java</file>
-            <file>file:/C:/Xampp/htdocs/sistema-venta/build.xml</file>
-            <file>file:/C:/Xampp/htdocs/sistema-venta/src/Logica/fproductos.java</file>
+            <file>file:/C:/xampp/htdocs/sistema-venta/src/Presentacion/frmusuariologin.java</file>
+            <file>file:/C:/xampp/htdocs/sistema-venta/src/Presentacion/frmventas.java</file>
+            <file>file:/C:/xampp/htdocs/sistema-venta/src/Logica/Conexion.java</file>
+            <file>file:/C:/xampp/htdocs/sistema-venta/src/Presentacion/FrmFactura_Entrega.java</file>
+            <file>file:/C:/xampp/htdocs/sistema-venta/src/Logica/fusuarios.java</file>
         </group>
     </open-files>
 </project-private>
